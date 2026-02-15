@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teddy Hug</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to top, #ffe6f0, #fff5fa);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .hug-container {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* BIGGER IMAGE */
+        .hug-img {
+            width: 600px;
+            max-width: 95vw; /* responsive */
+            animation: hug 2.5s ease-in-out forwards;
+        }
+
+        /* HEART */
+        .heart {
+            position: absolute;
+            top: -50px; /* adjusted for bigger image */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            opacity: 0;
+            animation: heartPop 2.5s ease-in-out forwards;
+        }
+
+        /* SQUEEZE ANIMATION */
+        @keyframes hug {
+            0% { transform: scale(0.9); }
+            40% { transform: scale(1.08); }
+            70% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+
+        /* HEART POP */
+        @keyframes heartPop {
+            0% { opacity: 0; transform: translateX(-50%) scale(0); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.4); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+
+        /* FLOAT EFFECT */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .letter-display {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            width: 60%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hug-container">
+        <div class="heart">❤️</div>
+        <img 
+            class="hug-img" 
+            src="https://i.pinimg.com/originals/3d/46/ae/3d46ae2e31cb6f80ad5d152b99576b7b.jpg" 
+            alt="Hugging Teddy Bears">
+            
+    </div>
+
+    <div class="letter-display" id="displayLetter"></div>
+
+    <script>
+        const savedLetter = localStorage.getItem("savedLetter");
+        document.getElementById("displayLetter").innerText = savedLetter;
+    </script>
+
+</body>
+</html>
